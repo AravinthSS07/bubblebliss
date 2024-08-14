@@ -1325,11 +1325,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialouge:
-    name: Dipshit
+    name: Max
     sentences:
     - 'Hello,
 
-      I''m Dipshit and today we''re going to learn to wash our hands,
+      I''m Max and today we''re going to learn to wash our hands,
       So lets get started.'
     - this is dialouge 2
     - this is dialouge 3
