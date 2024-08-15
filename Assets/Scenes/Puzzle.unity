@@ -1012,7 +1012,7 @@ GameObject:
   - component: {fileID: 577732177}
   - component: {fileID: 577732176}
   m_Layer: 5
-  m_Name: Button
+  m_Name: MenuButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1081,7 +1081,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 577732177}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1012322312}
+        m_TargetAssemblyTypeName: LevelLoader, Assembly-CSharp
+        m_MethodName: loadNextLevel
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &577732177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1952,6 +1964,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4a2f52bc4db6e364cbea3b8e423dbdec, type: 3}
+--- !u!114 &1012322312 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6474975887032237938, guid: 4a2f52bc4db6e364cbea3b8e423dbdec, type: 3}
+  m_PrefabInstance: {fileID: 1012322311}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd9af21800318a94c90c005a8ca2793d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1071782929
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,11 +6,26 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Title.unity
+    guid: 0b45144e13d37bc409a7a8601f0927b4
+  - enabled: 1
     path: Assets/Scenes/HandWashSteps.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    guid: cb693f7aadcdc1947957ee4ee1ae72e4
   - enabled: 1
     path: Assets/Scenes/SequenceScene.unity
     guid: 83537267e71d59b46ab114bdcbe7ca61
+  - enabled: 1
+    path: Assets/Scenes/games.unity
+    guid: a676555cde61f1442bc58c175568c3f6
+  - enabled: 1
+    path: Assets/Scenes/GermBuster.unity
+    guid: df985fd5d1d2a2847b680ed85a4af7b0
+  - enabled: 1
+    path: Assets/Scenes/Timer.unity
+    guid: 9e2b599c7be591e4f874e9dccee0313a
+  - enabled: 1
+    path: Assets/Scenes/Puzzle.unity
+    guid: b566c1fd6af740d498f04de61e39f029
   - enabled: 1
     path: Assets/Scenes/winScene.unity
     guid: c69375d509750bf4eaad3aced0eaa033
