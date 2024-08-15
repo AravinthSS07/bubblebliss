@@ -28,7 +28,7 @@ public class SandClock : MonoBehaviour
         SetRoundText(totalRounds);
     }
 
-    public void Start()
+    public void Begin()
     {
         Debug.Log("Begin method called");
 
@@ -100,7 +100,7 @@ public class SandClock : MonoBehaviour
             StartCoroutine(RotateSandClock(() =>
             {
                 SetRoundText(totalRounds - currentRound);
-                Start();
+                Begin();
             }));
         }
         else
