@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SequenceGame : MonoBehaviour
 {
+    public GameObject levelLoader;
+
     private int currentSequence = 0;
     [SerializeField]
     private int correctSequence = 12345678;
@@ -11,7 +13,7 @@ public class SequenceGame : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        levelLoader = GameObject.Find("LevelLoader");
     }
 
     // Update is called once per frame
@@ -27,11 +29,13 @@ public class SequenceGame : MonoBehaviour
         if (currentSequence == correctSequence)
         {
             Debug.Log("Correct sequence entered!");
+            levelLoader.GetComponent<LevelLoader>().loadNextLevel(2);
         }
         else if (currentSequence.ToString().Length > correctSequence.ToString().Length)
         {
             Debug.Log("Incorrect sequence entered!");
             currentSequence = 0;
+            levelLoader.GetComponent<LevelLoader>().loadNextLevel(3);
         }
     }
 }
