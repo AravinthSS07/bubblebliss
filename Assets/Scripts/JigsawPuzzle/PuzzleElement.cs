@@ -1,60 +1,41 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PuzzleElement : MonoBehaviour
 {
-    [SerializeField]
-    private Transform postion;
-
-    private Vector2 initialPostion;
-
-    private float deltaX, deltaY;
-
-    public static bool locked;
+    private Vector2 originalPosition, _offset;
+    private bool _dragging;
 
     // Start is called before the first frame update
     void Start()
     {
-        initialPostion = transform.position;
+        originalPosition = transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.touchCount > 0 && !locked)
-        {
-            Touch touch = Input.GetTouch(0);
-            Vector2 touchPostion = Camera.main.ScreenToWorldPoint(touch.position);
+        if(!_dragging) return;
+        transform.position = (Vector2)Input.mousePosition - _offset;
+    }
 
-            switch(touch.phase)
-            {
-                case TouchPhase.Began:
-                    if(GetComponent<Collider2D>() == Physics2D.OverlapPoint(touchPostion))
-                    {
-                        deltaX = touchPostion.x - transform.position.x;
-                        deltaY = touchPostion.y - transform.position.y;
-                    }
-                    break;
-                case TouchPhase.Moved:
-                    if(GetComponent<    Collider2D>() == Physics2D.OverlapPoint(touchPostion))
-                    {
-                        transform.position = new Vector2(touchPostion.x - deltaX, touchPostion.y - deltaY);
-                    }
-                    break;
-                case TouchPhase.Ended:
-                    if(Mathf.Abs(transform.position.x - postion.position.x) <= 0.5f &&
-                        Mathf.Abs(transform.position.y - postion.position.y) <= 0.5f)
-                    {
-                        transform.position = new Vector2(postion.position.x, postion.position.y);
-                        locked = true;
-                    }
-                    else
-                    {
-                        transform.position = new Vector2(initialPostion.x, initialPostion.y);
-                    }
-                    break;
-            }
-        }
+    void OnMouseDown()//PointerEventData eventData
+    {
+        _dragging = true;
+        _offset = GetMousePos() - (Vector2)transform.position;
+    }
+
+    void OnMouseUp()//PointerEventData eventData
+    {
+        transform.position = originalPosition;
+        _dragging = false;
+    }
+
+    Vector2 GetMousePos()
+    {
+        return Camera.main.ScreenToWorldPoint(Input.mousePosition);
     }
 }
