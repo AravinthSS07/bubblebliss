@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scripts/sandclock.cs.meta
 guid: 3800f022e0e530b408be794bef2326fa
+========
+guid: 4d79f39d9de03124584e0c0944c2fe4f
+>>>>>>>> gowtham:Assets/Scripts/SoapDrag.cs.meta
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2

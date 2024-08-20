@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scripts/sandclock.cs.meta
+guid: ece48882a023680438d769ce88e03a6f
+========
+guid: 4d79f39d9de03124584e0c0944c2fe4f
+>>>>>>>> gowtham:Assets/Scripts/SoapDrag.cs.meta
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

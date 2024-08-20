@@ -645,7 +645,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1231029864}
         m_TargetAssemblyTypeName: LevelLoader, Assembly-CSharp
-        m_MethodName: loadNextLevel
+        m_MethodName: nextScene
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

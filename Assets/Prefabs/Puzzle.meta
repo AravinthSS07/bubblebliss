@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Prefabs/Puzzle.meta
 guid: b5baed0c036a5df43b26b56a8de59477
+========
+guid: 8759456749a676d44ac6308a5196183d
+>>>>>>>> gowtham:Assets/Buttons.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
