@@ -1,6 +1,6 @@
 using UnityEngine;
-using UnityEngine.UI; // For accessing UI components
-using TMPro; // For TextMeshPro
+using UnityEngine.UI;
+using TMPro;
 using System.Collections;
 
 public class HandwashingGame : MonoBehaviour
@@ -13,6 +13,7 @@ public class HandwashingGame : MonoBehaviour
     public Image cleanHands;
     public GameObject messagePanel; // Reference to the new Panel for displaying the message
     public TextMeshProUGUI messageText; // Reference to the TextMeshProUGUI for displaying messages
+    public TextMeshProUGUI timerText; // Reference to TextMeshProUGUI for displaying the timer
 
     private bool isSoapActive = false;  // Track if soap is active
     private bool isWaterTapActive = false;  // Track if water tap is active
@@ -20,7 +21,11 @@ public class HandwashingGame : MonoBehaviour
     private Vector2 lastSwipePosition;
     private bool isCleaning = false;
     private int swipeCount = 0;  // Number of swipes
-    private const int requiredSwipes = 100;  // Number of swipes needed to complete cleaning
+    private const int requiredSwipes = 10000;  // Number of swipes needed to complete cleaning
+
+    private float timerDuration = 20f;  // Timer duration in seconds
+    private float timeRemaining;  // Time left on the timer
+    private bool timerRunning = false;  // To check if the timer is running
 
     void Start()
     {
@@ -30,6 +35,7 @@ public class HandwashingGame : MonoBehaviour
         waterTapButton.gameObject.SetActive(false);
         towelButton.gameObject.SetActive(false);
         messagePanel.SetActive(false); // Hide message panel initially
+        timerText.text = "00:00"; // Initialize the timer text
 
         // Add listeners to buttons
         soapButton.onClick.AddListener(OnSoapButtonClick);
@@ -37,8 +43,28 @@ public class HandwashingGame : MonoBehaviour
         towelButton.onClick.AddListener(OnTowelButtonClick);
     }
 
+
+
     void Update()
     {
+        // Update the timer if it's running
+        if (timerRunning)
+        {
+            if (timeRemaining > 0)
+            {
+                timeRemaining -= Time.deltaTime;
+                UpdateTimerDisplay(timeRemaining);
+            }
+            else
+            {
+                // Stop the timer when it hits zero and activate the water tap
+                timeRemaining = 0;
+                timerRunning = false;
+                UpdateTimerDisplay(timeRemaining); // Ensure the timer shows 00:00
+                ActivateWaterTap(); // Activate water tap when timer ends
+            }
+        }
+
         if (isSoapActive)
         {
             Vector2 touchPosition = Input.mousePosition;
@@ -90,11 +116,9 @@ public class HandwashingGame : MonoBehaviour
             cleanHands.gameObject.SetActive(true); // Show clean hands
             Debug.Log("Dirty hands hidden and clean hands shown.");
 
-            // Deactivate soap image after cleaning
             isSoapActive = false;
 
-            // Activate water tap after cleaning
-            ActivateWaterTap();
+            // The water tap button will now be activated after 20 seconds.
         }
     }
 
@@ -111,17 +135,29 @@ public class HandwashingGame : MonoBehaviour
         if (!isSoapActive) // Prevent multiple activations
         {
             isSoapActive = true;
-            StartCoroutine(SoapTimer());
+            StartTimer(); // Start the 20-second timer
         }
     }
 
-    IEnumerator SoapTimer()
+    // Function to start the timer
+    void StartTimer()
     {
-        yield return new WaitForSeconds(200f); // Wait for 20 seconds
-        if (isSoapActive)
-        {
-            ActivateWaterTap(); // Activate water tap after 20 seconds
-        }
+        timeRemaining = timerDuration;
+        timerRunning = true;
+    }
+
+    // Function to update the timer display
+    void UpdateTimerDisplay(float timeRemaining)
+    {
+        // Clamp timeRemaining to ensure it doesn't go below 0
+        timeRemaining = Mathf.Clamp(timeRemaining, 0, timerDuration);
+
+        // Calculate minutes and seconds
+        float minutes = Mathf.FloorToInt(timeRemaining / 60);
+        float seconds = Mathf.FloorToInt(timeRemaining % 60);
+
+        // Ensure the timer shows 00:00 when time runs out
+        timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 
     public void OnWaterTapButtonClick()
@@ -129,23 +165,27 @@ public class HandwashingGame : MonoBehaviour
         if (isWaterTapActive)
         {
             Debug.Log("Water tap button clicked.");
-            waterTapButton.gameObject.SetActive(false); // Disable water tap button
 
-            // Ensure clean hands are visible after clicking water tap
-            if (!cleanHands.gameObject.activeSelf)
+            // Disable the water tap button after it's clicked
+            waterTapButton.gameObject.SetActive(false);
+
+            // Hide dirty hands and show clean hands
+            if (dirtyHands.gameObject.activeSelf)
             {
-                cleanHands.gameObject.SetActive(true);
+                dirtyHands.gameObject.SetActive(false); // Hide dirty hands
             }
 
-            // Logic for washing hands animation or effects here
+            if (!cleanHands.gameObject.activeSelf)
+            {
+                cleanHands.gameObject.SetActive(true); // Show clean hands
+            }
+
             ActivateTowel(); // Activate towel button after washing
 
-            // Debug message to confirm state
-            Debug.Log("Clean hands should be visible now.");
-
-            isWaterTapActive = false;
+            isWaterTapActive = false; // Set water tap to inactive
         }
     }
+
 
     void ActivateTowel()
     {
