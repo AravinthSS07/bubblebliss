@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    public GameObject germPrefab;
+    public GameObject[] germPrefabs; // Array to hold different types of germ prefabs
     public float spawnInterval = 2f;
     private bool isGameStarted = false; // Variable to track whether the game has started
+
+    // Variables to define the spawn zone for a portrait screen
+    public float spawnZoneWidth = 5f;  // Example width
+    public float spawnZoneHeight = 10f; // Example height
 
     void Start()
     {
@@ -22,12 +26,22 @@ public class SpawnManager : MonoBehaviour
 
     void SpawnGerm()
     {
-        if (isGameStarted)
+        if (isGameStarted && germPrefabs.Length > 0)
         {
-            float screenWidth = Camera.main.aspect * Camera.main.orthographicSize;
-            float screenHeight = Camera.main.orthographicSize;
+            // Calculate the spawn area bounds
+            float spawnZoneHalfWidth = spawnZoneWidth / 2f;
+            float spawnZoneHalfHeight = spawnZoneHeight / 2f;
 
-            Vector2 spawnPosition = new Vector2(Random.Range(-screenWidth, screenWidth), Random.Range(-screenHeight, screenHeight));
+            // Generate a random position within the spawn zone
+            Vector2 spawnPosition = new Vector2(
+                Random.Range(-spawnZoneHalfWidth, spawnZoneHalfWidth),
+                Random.Range(-spawnZoneHalfHeight, spawnZoneHalfHeight)
+            );
+
+            // Randomly select a germ prefab from the array
+            GameObject germPrefab = germPrefabs[Random.Range(0, germPrefabs.Length)];
+
+            // Instantiate the selected germ prefab at the calculated position
             Instantiate(germPrefab, spawnPosition, Quaternion.identity);
         }
     }

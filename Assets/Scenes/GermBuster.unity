@@ -714,8 +714,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bb5f618cbc2b3445be7ea1f3084a9e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  germPrefab: {fileID: 6637273694071071503, guid: 590a0043a2e3ff244bc88694fab49523, type: 3}
+  germPrefabs:
+  - {fileID: 6637273694071071503, guid: 590a0043a2e3ff244bc88694fab49523, type: 3}
+  - {fileID: 6637273694071071503, guid: c0317fae5f4d323498e57e72a981277d, type: 3}
+  - {fileID: 6637273694071071503, guid: 912cb94a93664f34c8812f1a073d2022, type: 3}
   spawnInterval: 2
+  spawnZoneWidth: 4
+  spawnZoneHeight: 6
 --- !u!4 &652662112
 Transform:
   m_ObjectHideFlags: 0
