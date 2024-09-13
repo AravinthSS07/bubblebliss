@@ -25,6 +25,8 @@ public class PuzzleManager : MonoBehaviour
 
     private int piecesCorrect;
 
+    public GameObject levelLoder;
+
     void Start()
     {
         if (SelectedTexture == null)
@@ -47,6 +49,8 @@ public class PuzzleManager : MonoBehaviour
 
         // As we're starting the puzzle there will be no correct pieces.
         piecesCorrect = 0;
+
+        levelLoder = GameObject.Find("LevelLoader");
     }
 
     // Create all the jigsaw pieces
@@ -205,7 +209,8 @@ public class PuzzleManager : MonoBehaviour
             if (piecesCorrect == pieces.Count)
             {
                 playAgainButton.SetActive(true);
-                SceneManager.LoadScene("Winpage"); // Load the win scene
+                //SceneManager.LoadScene("Winpage"); // Load the win scene
+                levelLoder.GetComponent<LevelLoader>().LoadNextLevel(6);
             }
         }
     }

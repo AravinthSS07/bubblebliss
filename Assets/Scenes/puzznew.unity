@@ -299,9 +299,9 @@ RectTransform:
   - {fileID: 151246758}
   - {fileID: 82980965}
   - {fileID: 433898759}
-  - {fileID: 2093771467}
   - {fileID: 1301467114}
   - {fileID: 1062262841}
+  - {fileID: 2093771467}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1228,7 +1228,7 @@ GameObject:
   - component: {fileID: 2093771468}
   - component: {fileID: 2093771470}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: Home Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1342,7 +1342,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
