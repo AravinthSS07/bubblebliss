@@ -1,27 +1,23 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using System.Collections;
 
-public class SceneLoader : MonoBehaviour
+public class levelloader : MonoBehaviour
 {
-    public Animator transitionAnimator;
-    public float transitionTime = 1f;
+    [SerializeField] private Animator animator;
+    [SerializeField] private float transitionTime = 1f;
 
-    // Call this method to load a scene by its index
-    public void LoadScene(int sceneIndex)
+    public void nextScene(int index)
     {
-        StartCoroutine(LoadSceneWithTransition(sceneIndex));
+        StartCoroutine(switchScene(index));
     }
 
-    IEnumerator LoadSceneWithTransition(int sceneIndex)
+    IEnumerator switchScene(int index)
     {
-        // Trigger the transition animation
-        transitionAnimator.SetTrigger("Start");
 
-        // Wait for the animation to finish
         yield return new WaitForSeconds(transitionTime);
-
-        // Load the scene
-        SceneManager.LoadScene(sceneIndex);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(index);
     }
+
 }
