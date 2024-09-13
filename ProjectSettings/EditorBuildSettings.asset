@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MapGame/BathroomScene.unity
     guid: 7183d2127e4eac14da4fb79089ecc82b
+  - enabled: 1
+    path: Assets/Scenes/HandwashingMapScene.unity
+    guid: fc8a1a62ea9b9294a99fb28138038e12
   m_configObjects: {}
