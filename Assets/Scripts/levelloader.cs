@@ -1,13 +1,27 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
-public class levelloader : MonoBehaviour
+public class SceneLoader : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public void LoadLevel(int levelIndex)
+    public Animator transitionAnimator;
+    public float transitionTime = 1f;
+
+    // Call this method to load a scene by its index
+    public void LoadScene(int sceneIndex)
     {
-        SceneManager.LoadScene(levelIndex);
+        StartCoroutine(LoadSceneWithTransition(sceneIndex));
+    }
+
+    IEnumerator LoadSceneWithTransition(int sceneIndex)
+    {
+        // Trigger the transition animation
+        transitionAnimator.SetTrigger("Start");
+
+        // Wait for the animation to finish
+        yield return new WaitForSeconds(transitionTime);
+
+        // Load the scene
+        SceneManager.LoadScene(sceneIndex);
     }
 }
