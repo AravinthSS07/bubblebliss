@@ -1188,7 +1188,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -88.63507, w: -48.74946}
+  m_margin: {x: 0, y: 0, z: -1.1313477, w: -1.8728256}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1218,8 +1218,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 100, y: 789}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 159, y: 601.11}
+  m_SizeDelta: {x: 400, y: 172.8892}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &990034540
 GameObject:
@@ -1432,6 +1432,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1046700248}
   m_CullTransparentMesh: 1
+--- !u!1001 &1074336272
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3662176814779317126, guid: 498085725c78a5946994b054aeb97749, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 360
+      objectReference: {fileID: 0}
+    - target: {fileID: 3662176814779317126, guid: 498085725c78a5946994b054aeb97749, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 640
+      objectReference: {fileID: 0}
+    - target: {fileID: 3662176814779317126, guid: 498085725c78a5946994b054aeb97749, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3662176814779317126, guid: 498085725c78a5946994b054aeb97749, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3662176814779317126, guid: 498085725c78a5946994b054aeb97749, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3662176814779317126, guid: 498085725c78a5946994b054aeb97749, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3662176814779317126, guid: 498085725c78a5946994b054aeb97749, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3662176814779317126, guid: 498085725c78a5946994b054aeb97749, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3662176814779317126, guid: 498085725c78a5946994b054aeb97749, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3662176814779317126, guid: 498085725c78a5946994b054aeb97749, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6749880226489256644, guid: 498085725c78a5946994b054aeb97749, type: 3}
+      propertyPath: m_Name
+      value: LevelLoader
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 498085725c78a5946994b054aeb97749, type: 3}
 --- !u!1 &1101829939
 GameObject:
   m_ObjectHideFlags: 0
@@ -2295,7 +2352,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 250.99988}
+  m_AnchoredPosition: {x: -0.000033908, y: 132}
   m_SizeDelta: {x: 679, y: 602}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2037921500
@@ -2497,6 +2554,7 @@ CanvasRenderer:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 1074336272}
   - {fileID: 1112686110}
   - {fileID: 1390820547}
   - {fileID: 1186104048}

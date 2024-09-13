@@ -13,7 +13,7 @@ public class SequenceGame : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        levelLoader = GameObject.Find("levelloader");
+        levelLoader = GameObject.Find("LevelLoader");
     }
 
     // Update is called once per frame
@@ -29,13 +29,13 @@ public class SequenceGame : MonoBehaviour
         if (currentSequence == correctSequence)
         {
             Debug.Log("Correct sequence entered!");
-            levelLoader.GetComponent<levelloader>().nextScene(10);
+            levelLoader.GetComponent<LevelLoader>().nextScene(10);
         }
         else if (currentSequence.ToString().Length > correctSequence.ToString().Length)
         {
             Debug.Log("Incorrect sequence entered!");
             currentSequence = 0;
-            levelLoader.GetComponent<levelloader>().nextScene(11);
+            levelLoader.GetComponent<LevelLoader>().nextScene(11);
         }
     }
 }
