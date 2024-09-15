@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections;
-using Unity.VisualScripting;
 
 public class HandwashingGame : MonoBehaviour
 {
@@ -32,6 +31,12 @@ public class HandwashingGame : MonoBehaviour
 
     public GameObject[] germimages;
 
+    // Reference to the soap bubble prefab
+    private float lastBubbleTime = 0f;
+    private float bubbleInterval = 0.2f; // Minimum time between soap bubble creation (in seconds)
+
+    public GameObject soapBubblePrefab; // Add this to hold the soap bubble prefab
+
     void Start()
     {
         // Initialize button states and images
@@ -47,8 +52,6 @@ public class HandwashingGame : MonoBehaviour
         waterTapButton.onClick.AddListener(OnWaterTapButtonClick);
         towelButton.onClick.AddListener(OnTowelButtonClick);
     }
-
-
 
     void Update()
     {
@@ -68,7 +71,7 @@ public class HandwashingGame : MonoBehaviour
                 UpdateTimerDisplay(timeRemaining); // Ensure the timer shows 00:00
                 ActivateWaterTap(); // Activate water tap when timer ends
             }
-            if(timeRemaining == 0)
+            if (timeRemaining == 0)
             {
                 foreach (GameObject germ in germimages)
                 {
@@ -77,7 +80,8 @@ public class HandwashingGame : MonoBehaviour
             }
         }
 
-        if (isSoapActive)
+        // Check for swipe input when the soap is active
+        if (isSoapActive && timerRunning)  // Only allow bubbles while timer is running
         {
             Vector2 touchPosition = Input.mousePosition;
 
@@ -89,7 +93,7 @@ public class HandwashingGame : MonoBehaviour
 
                 if (touch.phase == TouchPhase.Began)
                 {
-                    particle.Play();
+                    particle.Play(); // Play the particle effect when touch begins
                 }
             }
 
@@ -113,6 +117,10 @@ public class HandwashingGame : MonoBehaviour
                 if (swipeDelta.magnitude > 10f)  // Adjust threshold as needed
                 {
                     swipeCount++;
+
+                    // Instantiate soap bubble at the swipe position
+                    CreateSoapBubbleAtPosition(localPoint);
+
                     if (swipeCount >= requiredSwipes)
                     {
                         StartCleaning();
@@ -205,7 +213,6 @@ public class HandwashingGame : MonoBehaviour
         }
     }
 
-
     void ActivateTowel()
     {
         Debug.Log("ActivateTowel called.");
@@ -222,5 +229,34 @@ public class HandwashingGame : MonoBehaviour
         // Set message text
         messageText.gameObject.SetActive(true); // Ensure message text is visible
         messageText.text = "You have cleaned your hands properly!";
+    }
+
+    // Method to instantiate soap bubbles at the swipe position
+    void CreateSoapBubbleAtPosition(Vector2 localPoint)
+    {
+        // Check if enough time has passed since the last bubble
+        if (Time.time - lastBubbleTime >= bubbleInterval)
+        {
+            // Convert localPoint to world position within the dirtyHands UI element
+            Vector3 worldPosition = dirtyHands.rectTransform.TransformPoint(localPoint);
+
+            // Instantiate the soap bubble prefab at the world position
+            GameObject soapBubbleInstance = Instantiate(soapBubblePrefab, worldPosition, Quaternion.identity, dirtyHands.transform);
+
+            // Get the RectTransform component of the soap bubble to adjust the scale
+            RectTransform bubbleRectTransform = soapBubbleInstance.GetComponent<RectTransform>();
+
+            // Increase the size of the soap bubble
+            if (bubbleRectTransform != null)
+            {
+                bubbleRectTransform.localScale = new Vector3(4f, 4f, 4f);  // Increase the scale (adjust values as needed)
+            }
+
+            // Update the time the bubble was last created
+            lastBubbleTime = Time.time;
+
+            // Destroy the soap bubble after 2 seconds to prevent clutter
+            Destroy(soapBubbleInstance, 2f);
+        }
     }
 }
