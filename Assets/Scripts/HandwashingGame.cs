@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections;
+using Unity.VisualScripting;
 
 public class HandwashingGame : MonoBehaviour
 {
@@ -21,11 +22,15 @@ public class HandwashingGame : MonoBehaviour
     private Vector2 lastSwipePosition;
     private bool isCleaning = false;
     private int swipeCount = 0;  // Number of swipes
-    private const int requiredSwipes = 10000;  // Number of swipes needed to complete cleaning
+    [SerializeField] private const int requiredSwipes = 1000;  // Number of swipes needed to complete cleaning
 
-    private float timerDuration = 20f;  // Timer duration in seconds
+    [SerializeField] private float timerDuration = 20f;  // Timer duration in seconds
     private float timeRemaining;  // Time left on the timer
     private bool timerRunning = false;  // To check if the timer is running
+
+    public ParticleSystem particle;
+
+    public GameObject[] germimages;
 
     void Start()
     {
@@ -63,6 +68,13 @@ public class HandwashingGame : MonoBehaviour
                 UpdateTimerDisplay(timeRemaining); // Ensure the timer shows 00:00
                 ActivateWaterTap(); // Activate water tap when timer ends
             }
+            if(timeRemaining == 0)
+            {
+                foreach (GameObject germ in germimages)
+                {
+                    germ.gameObject.SetActive(false);
+                }
+            }
         }
 
         if (isSoapActive)
@@ -72,6 +84,13 @@ public class HandwashingGame : MonoBehaviour
             if (Input.touchCount > 0)
             {
                 touchPosition = Input.GetTouch(0).position;
+
+                Touch touch = Input.GetTouch(0);
+
+                if (touch.phase == TouchPhase.Began)
+                {
+                    particle.Play();
+                }
             }
 
             RectTransformUtility.ScreenPointToLocalPointInRectangle(
