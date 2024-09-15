@@ -21,11 +21,21 @@ public class HandwashingGame : MonoBehaviour
     private Vector2 lastSwipePosition;
     private bool isCleaning = false;
     private int swipeCount = 0;  // Number of swipes
-    private const int requiredSwipes = 10000;  // Number of swipes needed to complete cleaning
+    [SerializeField] private const int requiredSwipes = 1000;  // Number of swipes needed to complete cleaning
 
-    private float timerDuration = 20f;  // Timer duration in seconds
+    [SerializeField] private float timerDuration = 20f;  // Timer duration in seconds
     private float timeRemaining;  // Time left on the timer
     private bool timerRunning = false;  // To check if the timer is running
+
+    public ParticleSystem particle;
+
+    public GameObject[] germimages;
+
+    // Reference to the soap bubble prefab
+    private float lastBubbleTime = 0f;
+    private float bubbleInterval = 0.2f; // Minimum time between soap bubble creation (in seconds)
+
+    public GameObject soapBubblePrefab; // Add this to hold the soap bubble prefab
 
     void Start()
     {
@@ -42,8 +52,6 @@ public class HandwashingGame : MonoBehaviour
         waterTapButton.onClick.AddListener(OnWaterTapButtonClick);
         towelButton.onClick.AddListener(OnTowelButtonClick);
     }
-
-
 
     void Update()
     {
@@ -63,15 +71,30 @@ public class HandwashingGame : MonoBehaviour
                 UpdateTimerDisplay(timeRemaining); // Ensure the timer shows 00:00
                 ActivateWaterTap(); // Activate water tap when timer ends
             }
+            if (timeRemaining == 0)
+            {
+                foreach (GameObject germ in germimages)
+                {
+                    germ.gameObject.SetActive(false);
+                }
+            }
         }
 
-        if (isSoapActive)
+        // Check for swipe input when the soap is active
+        if (isSoapActive && timerRunning)  // Only allow bubbles while timer is running
         {
             Vector2 touchPosition = Input.mousePosition;
 
             if (Input.touchCount > 0)
             {
                 touchPosition = Input.GetTouch(0).position;
+
+                Touch touch = Input.GetTouch(0);
+
+                if (touch.phase == TouchPhase.Began)
+                {
+                    particle.Play(); // Play the particle effect when touch begins
+                }
             }
 
             RectTransformUtility.ScreenPointToLocalPointInRectangle(
@@ -94,6 +117,10 @@ public class HandwashingGame : MonoBehaviour
                 if (swipeDelta.magnitude > 10f)  // Adjust threshold as needed
                 {
                     swipeCount++;
+
+                    // Instantiate soap bubble at the swipe position
+                    CreateSoapBubbleAtPosition(localPoint);
+
                     if (swipeCount >= requiredSwipes)
                     {
                         StartCleaning();
@@ -186,7 +213,6 @@ public class HandwashingGame : MonoBehaviour
         }
     }
 
-
     void ActivateTowel()
     {
         Debug.Log("ActivateTowel called.");
@@ -203,5 +229,34 @@ public class HandwashingGame : MonoBehaviour
         // Set message text
         messageText.gameObject.SetActive(true); // Ensure message text is visible
         messageText.text = "You have cleaned your hands properly!";
+    }
+
+    // Method to instantiate soap bubbles at the swipe position
+    void CreateSoapBubbleAtPosition(Vector2 localPoint)
+    {
+        // Check if enough time has passed since the last bubble
+        if (Time.time - lastBubbleTime >= bubbleInterval)
+        {
+            // Convert localPoint to world position within the dirtyHands UI element
+            Vector3 worldPosition = dirtyHands.rectTransform.TransformPoint(localPoint);
+
+            // Instantiate the soap bubble prefab at the world position
+            GameObject soapBubbleInstance = Instantiate(soapBubblePrefab, worldPosition, Quaternion.identity, dirtyHands.transform);
+
+            // Get the RectTransform component of the soap bubble to adjust the scale
+            RectTransform bubbleRectTransform = soapBubbleInstance.GetComponent<RectTransform>();
+
+            // Increase the size of the soap bubble
+            if (bubbleRectTransform != null)
+            {
+                bubbleRectTransform.localScale = new Vector3(4f, 4f, 4f);  // Increase the scale (adjust values as needed)
+            }
+
+            // Update the time the bubble was last created
+            lastBubbleTime = Time.time;
+
+            // Destroy the soap bubble after 2 seconds to prevent clutter
+            Destroy(soapBubbleInstance, 2f);
+        }
     }
 }
