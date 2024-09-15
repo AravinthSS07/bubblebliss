@@ -29,7 +29,7 @@ public class SequenceGame : MonoBehaviour
         if (currentSequence == correctSequence)
         {
             Debug.Log("Correct sequence entered!");
-            levelLoader.GetComponent<LevelLoader>().nextScene(6);
+            levelLoader.GetComponent<LevelLoader>().nextScene(14);
         }
         else if (currentSequence.ToString().Length > correctSequence.ToString().Length)
         {

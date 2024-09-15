@@ -47,4 +47,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Timer.unity
     guid: 9e2b599c7be591e4f874e9dccee0313a
+  - enabled: 1
+    path: Assets/Scenes/winScene.unity
+    guid: c69375d509750bf4eaad3aced0eaa033
+  - enabled: 1
+    path: Assets/Scenes/HandWashVideo/HandWash.unity
+    guid: 2e8502baa8166114792913285daa918a
   m_configObjects: {}
