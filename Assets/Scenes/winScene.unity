@@ -448,6 +448,7 @@ RectTransform:
   - {fileID: 1262110037}
   - {fileID: 1445835875}
   - {fileID: 2116899218}
+  - {fileID: 1933406785}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -924,6 +925,81 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1866110913}
   m_CullTransparentMesh: 1
+--- !u!1 &1933406784
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1933406785}
+  - component: {fileID: 1933406787}
+  - component: {fileID: 1933406786}
+  m_Layer: 5
+  m_Name: Mascot_Sad
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1933406785
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1933406784}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 915741584}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -158.15955, y: 197.49}
+  m_SizeDelta: {x: 316.3188, y: 394.9799}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1933406786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1933406784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 3dde2ba2c77cb134fb62516770aec74a, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1933406787
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1933406784}
+  m_CullTransparentMesh: 1
 --- !u!1001 &2116899217
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -967,6 +1043,18 @@ PrefabInstance:
     - target: {fileID: 5821587023950385665, guid: 2fac8cc85b61ede4cbd4a923deb07e7e, type: 3}
       propertyPath: m_SizeDelta.y
       value: 66.841
+      objectReference: {fileID: 0}
+    - target: {fileID: 5821587023950385665, guid: 2fac8cc85b61ede4cbd4a923deb07e7e, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5821587023950385665, guid: 2fac8cc85b61ede4cbd4a923deb07e7e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.777776
+      objectReference: {fileID: 0}
+    - target: {fileID: 5821587023950385665, guid: 2fac8cc85b61ede4cbd4a923deb07e7e, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2.777776
       objectReference: {fileID: 0}
     - target: {fileID: 5821587023950385665, guid: 2fac8cc85b61ede4cbd4a923deb07e7e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1015,6 +1103,10 @@ PrefabInstance:
     - target: {fileID: 5821587023950385665, guid: 2fac8cc85b61ede4cbd4a923deb07e7e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5821587023950385665, guid: 2fac8cc85b61ede4cbd4a923deb07e7e, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7046581699610942065, guid: 2fac8cc85b61ede4cbd4a923deb07e7e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
