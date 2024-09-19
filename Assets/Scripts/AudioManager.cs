@@ -11,7 +11,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip buttonClickSound;
 
     [Header("Volume Settings ----------")]
-    public float normalVolume = 0.5f;  // Normal volume level for background music
+    public float normalVolume = 1.0f;  // Normal volume level for background music
     public float loweredVolume = 0.2f; // Lower volume level during button click
     public float volumeRestoreDelay = 0.5f; // Delay before restoring volume
 
