@@ -1827,7 +1827,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 973019319064296209, guid: 77f104ff4713e684a83c3241915c0d4d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -207
+      value: -176
       objectReference: {fileID: 0}
     - target: {fileID: 973019319064296209, guid: 77f104ff4713e684a83c3241915c0d4d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -3066,7 +3066,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 151}
+  m_AnchoredPosition: {x: 0, y: 105.77}
   m_SizeDelta: {x: -86.1503, y: 211.5316}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1656087568
@@ -3091,8 +3091,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "You have washed \nyour hands!!\n"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 1c509f78b52408d42b1e718e8184a4cf, type: 2}
+  m_sharedMaterial: {fileID: -4408263664709034083, guid: 1c509f78b52408d42b1e718e8184a4cf, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3116,8 +3116,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 70
-  m_fontSizeBase: 70
+  m_fontSize: 92
+  m_fontSizeBase: 92
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -8240,14 +8240,14 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 356806311}
-  - {fileID: 864773837}
-  - {fileID: 1222783717}
   - {fileID: 1637147671}
-  - {fileID: 919738221}
-  - {fileID: 858326892}
-  - {fileID: 11877718}
   - {fileID: 1346025613}
+  - {fileID: 1222783717}
+  - {fileID: 919738221}
+  - {fileID: 864773837}
+  - {fileID: 858326892}
+  - {fileID: 356806311}
+  - {fileID: 11877718}
   m_Father: {fileID: 1390820547}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
