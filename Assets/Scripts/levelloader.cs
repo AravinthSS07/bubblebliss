@@ -18,6 +18,13 @@ public class LevelLoader : MonoBehaviour
         SceneManager.LoadScene(index);
     }
 
+    IEnumerator quitGame()
+    {
+        animator.SetTrigger("Start");
+        yield return new WaitForSeconds(transitionTime);
+        Application.Quit();
+    }
+
     public void LoadNextLevel(int index)
     {
         StartCoroutine(switchScene(index));
@@ -26,5 +33,10 @@ public class LevelLoader : MonoBehaviour
     public void nextScene(int index)
     {
         StartCoroutine(switchScene(index));
+    }
+
+    public void close()
+    {
+        StartCoroutine(quitGame());
     }
 }
